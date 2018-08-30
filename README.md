@@ -36,7 +36,7 @@ The original data is stored in the file "catalog.xml"  XML-file structure:
 Implemented the functionality of adding news and searching news in the catalog
  
  # Example
- 
+ ![srshcatalog](https://user-images.githubusercontent.com/42671888/44870429-eca45800-ac98-11e8-81ab-bb304579f26f.JPG)
  
  # Usage
  
