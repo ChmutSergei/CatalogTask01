@@ -2,7 +2,7 @@ package by.chmut.catalog.controller.command;
 
 import by.chmut.catalog.bean.News;
 import by.chmut.catalog.controller.Command;
-import by.chmut.catalog.service.ServiceFactory;
+import by.chmut.catalog.service.Service;
 
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -12,7 +12,15 @@ public class AddCommand implements Command {
 
     private String[] value = new String[6];
 
-    private static final ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    Service service;
 
     @Override
 
@@ -28,7 +36,7 @@ public class AddCommand implements Command {
 
         News news = makeNewsFromData(value);
 
-        serviceFactory.getService().addNews(news);
+        service.addNews(news);
 
         return null;
     }

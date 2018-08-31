@@ -1,21 +1,29 @@
 package by.chmut.catalog.dao;
 
+import by.chmut.catalog.Main;
 import by.chmut.catalog.bean.Catalog;
 import by.chmut.catalog.bean.Categories;
 import by.chmut.catalog.bean.News;
 import by.chmut.catalog.bean.criteria.Criteria;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.Field;
 
 import java.util.*;
 
 
+
 public class CatalogDAOImpl implements CatalogDAO {
 
-    private Catalog catalog;
+
+    private Catalog catalog;;
 
     public Catalog getCatalog() {
         return catalog;
+    }
+
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
     }
 
     @Override

@@ -2,7 +2,11 @@ package by.chmut.catalog;
 
 import by.chmut.catalog.bean.News;
 import by.chmut.catalog.controller.Controller;
+import by.chmut.catalog.dao.CatalogDAO;
+import by.chmut.catalog.service.Service;
 import by.chmut.catalog.view.View;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import java.util.Set;
 
@@ -11,6 +15,7 @@ public class Main {
     private static final Controller controller = new Controller();
 
     public static void main(String[] args) {
+
 
         controller.doAction("read-name=All");
 
