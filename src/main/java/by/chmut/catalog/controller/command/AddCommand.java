@@ -1,12 +1,14 @@
 package by.chmut.catalog.controller.command;
 
 import by.chmut.catalog.bean.News;
+import by.chmut.catalog.controller.Command;
 import by.chmut.catalog.service.ServiceFactory;
 
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddCommand implements by.chmut.catalog.controller.Command {
+public class AddCommand implements Command {
 
     private String[] value = new String[6];
 
@@ -14,7 +16,7 @@ public class AddCommand implements by.chmut.catalog.controller.Command {
 
     @Override
 
-    public void execute(String request) {
+    public Set<News> execute(String request) {
 
         Matcher reqMatcher = Pattern.compile("(cat|sub|name|prov|date|info) ?= ?([\\w.]+)").matcher(request);
 
@@ -27,6 +29,8 @@ public class AddCommand implements by.chmut.catalog.controller.Command {
         News news = makeNewsFromData(value);
 
         serviceFactory.getService().addNews(news);
+
+        return null;
     }
 
     private void setParametrFromRequest(String parameters) {

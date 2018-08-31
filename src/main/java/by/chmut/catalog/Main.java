@@ -1,23 +1,37 @@
 package by.chmut.catalog;
 
+import by.chmut.catalog.bean.News;
 import by.chmut.catalog.controller.Controller;
 import by.chmut.catalog.view.View;
 
+import java.util.Set;
+
 public class Main {
 
+    private static final Controller controller = new Controller();
+
     public static void main(String[] args) {
-        Controller controller = new Controller();
+
         controller.doAction("read-name=All");
+
         while (true) {
+
             printInfoForCommand();
+
             String request = View.getRequest();
+
             if (request.equalsIgnoreCase("quit")) {
+
                 break;
             }
-            controller.doAction(request);
-                View.showResult();
+
+            Set<News> response = controller.doAction(request);
+
+                View.showResult(response);
+
         }
         controller.doAction("save-name=All");
+
         System.out.println("Bye - bye!");
     }
 
@@ -31,5 +45,3 @@ public class Main {
         System.out.println("for save and exit - command 'quit' !!! \u001B[0m");
     }
 }
-
-//add -category=film -subcategory=action -newsName= Mission Impossible 3 -news= New film on DVD -date=28.12.2006 -provider = Chmut

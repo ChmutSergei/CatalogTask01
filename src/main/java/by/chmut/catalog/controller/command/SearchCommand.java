@@ -5,7 +5,6 @@ import by.chmut.catalog.bean.criteria.Criteria;
 import by.chmut.catalog.bean.criteria.SearchCriteria;
 import by.chmut.catalog.controller.Command;
 import by.chmut.catalog.service.ServiceFactory;
-import by.chmut.catalog.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +18,20 @@ import static by.chmut.catalog.bean.criteria.SearchCriteria.Subcategory.SUBCATEG
 
 
 public class SearchCommand implements Command {
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private Criteria<SearchCriteria.Category> categoryCriteria = new Criteria<>(SearchCriteria.Category.class);
     private Criteria<SearchCriteria.Subcategory> subcategoryCriteria = new Criteria<>(SearchCriteria.Subcategory.class);
     private Criteria<SearchCriteria.News> newsCriteria = new Criteria<>(SearchCriteria.News.class);
 
     @Override
-    public void execute(String request) {
+    public Set<News> execute(String request) {
 
         List<Criteria> allCriteria = getParamsCriteria(request);
 
         Set<News> result = serviceFactory.getService().find(allCriteria);
 
-        View view = new View();
-
-        view.setResult(result);
+        return result;
     }
 
 
