@@ -40,11 +40,11 @@ Implemented the functionality of adding news and searching news in the catalog
  
  # Usage
  
- You must save the file **catalog.xm**l from directory _CatalogNewsTask-01/src/main/resources/_
+ You must save the file **catalog.xm**l from directory _catalog/src/main/resources/_
 
 to any folder **and copy the path to this folder** 
 
-Edit file **JAXB.properties** from directory _CatalogNewsTask-01/src/main/resources/_
+Edit file **JAXB.properties** from directory _catalog/src/main/resources/_
 
 ->>> **paste path** to file **catalog.xml** 
 
