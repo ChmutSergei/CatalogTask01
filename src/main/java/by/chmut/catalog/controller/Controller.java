@@ -1,13 +1,9 @@
 package by.chmut.catalog.controller;
 
-import by.chmut.catalog.bean.News;
-
-import java.util.Set;
-
 public class Controller{
     private final CommandDirector commandDirector = new CommandDirector();
 
-    public Set<News> doAction(String request) {
+    public String[] doAction(String request) {
         int index = getIndexForParse(request);
         String commandName = request.substring(0,index).trim();
         request = request.substring(index+1,request.length());
@@ -16,9 +12,9 @@ public class Controller{
         }
         Command command = commandDirector.getCommand(commandName);
 
-        Set<News> result = command.execute(request);
+        String[] response = command.execute(request);
 
-        return result;
+        return response;
     }
 
     private int getIndexForParse(String request) {

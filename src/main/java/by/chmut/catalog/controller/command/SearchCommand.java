@@ -1,17 +1,13 @@
 package by.chmut.catalog.controller.command;
 
-
 import by.chmut.catalog.bean.News;
 import by.chmut.catalog.bean.criteria.Criteria;
 import by.chmut.catalog.bean.criteria.SearchCriteria;
 import by.chmut.catalog.controller.Command;
+import by.chmut.catalog.service.ServiceFactory;
+import by.chmut.catalog.view.View;
 
-import by.chmut.catalog.service.Service;
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,35 +17,30 @@ import static by.chmut.catalog.bean.criteria.SearchCriteria.Subcategory.SUBCATEG
 
 
 public class SearchCommand implements Command {
-
-    Service service;
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-    //    Service service = ReadCommand.service ;
-
-
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private Criteria<SearchCriteria.Category> categoryCriteria = new Criteria<>(SearchCriteria.Category.class);
     private Criteria<SearchCriteria.Subcategory> subcategoryCriteria = new Criteria<>(SearchCriteria.Subcategory.class);
     private Criteria<SearchCriteria.News> newsCriteria = new Criteria<>(SearchCriteria.News.class);
 
     @Override
-    public Set<News> execute(String request) {
+    public String[] execute(String request) {
 
         List<Criteria> allCriteria = getParamsCriteria(request);
 
-//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Set<News> result = serviceFactory.getService().find(allCriteria);
 
-//        Service service = context.getBean("service",Service.class);
+        return makeResponse(result);
+    }
 
-        Set<News> result = service.find(allCriteria);
+    private String[] makeResponse(Set<News> result) {
 
-        return result;
+        String[] response = new String[result.size()];
+        int i =0;
+        for (News news: result) {
+            response[i] = news.toString();
+            i++;
+        }
+        return response;
     }
 
 

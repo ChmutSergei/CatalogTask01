@@ -1,28 +1,23 @@
 package by.chmut.catalog.controller.command;
 
-import by.chmut.catalog.bean.News;
 import by.chmut.catalog.controller.Command;
-import by.chmut.catalog.service.Service;
-
-import java.util.Set;
+import by.chmut.catalog.dao.DAOException;
+import by.chmut.catalog.dao.DAOFactory;
 
 public class SaveCommand implements Command {
 
-    Service service;
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
+    private DAOFactory daoFactory = DAOFactory.getInstance();
 
     @Override
-    public Set<News> execute(String request) {
+    public String[] execute(String request) {
+        try {
+            daoFactory.getCatalogDAO().save();
+        } catch (DAOException e) {
+            System.out.println("Error with save news");
+        }
 
-        service.save();
+        String[] response = {"Catalog was saved."};
 
-        return null;
+        return response;
     }
 }

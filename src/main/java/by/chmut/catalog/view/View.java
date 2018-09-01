@@ -1,9 +1,7 @@
 package by.chmut.catalog.view;
 
-import by.chmut.catalog.bean.News;
-
 import java.util.Scanner;
-import java.util.Set;
+
 
 public class View {
 
@@ -13,11 +11,9 @@ public class View {
         return request;
     }
 
-    public static void showResult(Set<News> result) {
-        if (result != null) {
-            for (News news : result) {
-                System.out.println(news);
-            }
+    public static void showResult(String[] response) {
+        for (String row : response) {
+            System.out.println(row);
         }
     }
 }
