@@ -54,6 +54,13 @@
             <DATE_OF_ISSUE>24.06.2012</DATE_OF_ISSUE>
             <NEWS_BODY>new album of Marlin Manson</NEWS_BODY>
         </SUBCATEGORY>
+        <SUBCATEGORY>
+            <SUBCATEGORY_NAME>pop</SUBCATEGORY_NAME>
+            <NEWS_NAME>Test</NEWS_NAME>
+            <PROVIDER_AUTHOR_AUTHORS>test</PROVIDER_AUTHOR_AUTHORS>
+            <DATE_OF_ISSUE>02</DATE_OF_ISSUE>
+            <NEWS_BODY>test</NEWS_BODY>
+        </SUBCATEGORY>
     </CATEGORY>
     <CATEGORY>
         <CATEGORY_NAME>Books</CATEGORY_NAME>

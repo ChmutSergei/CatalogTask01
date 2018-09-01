@@ -5,7 +5,6 @@ import by.chmut.catalog.bean.criteria.Criteria;
 import by.chmut.catalog.bean.criteria.SearchCriteria;
 import by.chmut.catalog.controller.Command;
 import by.chmut.catalog.service.ServiceFactory;
-import by.chmut.catalog.view.View;
 
 import java.util.*;
 import java.util.regex.Matcher;

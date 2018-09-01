@@ -12,8 +12,4 @@ public interface Service {
     <E> Set<News> find(List<Criteria> allCriteriaToSearch);
 
     void addNews(News news);
-
-    void load();
-
-    void save();
 }
